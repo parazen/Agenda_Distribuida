@@ -1,0 +1,61 @@
+@startuml agenda_distribuida
+skinparam classAttributeIconSize 0
+
+package br.com.agenda_distribuida <<Folder>> {
+     class Data {
+          -dia : int
+          -mes : int
+          -ano : int
+     }
+
+     class Endereco {
+          -rua : String
+          -bairro : String
+          -cidade : String
+          -cep : String
+          -tipo : Tipo
+     }
+
+     enum Tipo {
+        PESSOAL
+        TRABALHO
+     }
+
+     class Telefone {
+          -telefone : String
+          -tipo : Tipo
+     }
+
+     class Email {
+          -email : String
+          -tipo : Tipo
+     }
+
+     class Contato {
+          -id : int
+          -primeiroNome : String
+          -ultimoNome : String
+          -telefones : Telefone
+          -diaAniversario : Data
+          -emails : Email
+          -enderecos : Endereco
+     }
+
+     class Message {
+          -type : int
+          -id : int
+          -objReference : String
+          -methodId : String
+          -args : String
+     }
+}
+
+Contato *-- Email
+
+Contato *-- Endereco
+
+Contato *-- Data
+
+Contato *-- Telefone
+
+@enduml
